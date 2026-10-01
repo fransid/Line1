@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exercices b/d – p/q – groupes de consonnes | Sid KHALIFA</title>
+<style>
+:root{--g:#7b1230;--g2:#a3163f;--p:#ffd9e8;--p2:#f7a8c8;--ok:#1e9e4a;--ko:#d62839}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Comic Sans MS","Trebuchet MS",Verdana,sans-serif;background:linear-gradient(160deg,var(--p),var(--p2) 60%,#e88bb4);color:#3a0a19;min-height:100vh;padding:16px}
+.wrap{max-width:820px;margin:auto}
+header{text-align:center;background:var(--g);border-radius:22px;padding:18px;color:#fff;box-shadow:0 6px 18px rgba(123,18,48,.35)}
+header img{width:211px;height:166px;max-width:100%;display:block;margin:0 auto 10px}
+header h1{margin:6px 0;font-size:1.5rem}
+header p{margin:4px 0;color:#ffd9e8}
+.auteur{display:inline-block;background:var(--p);color:var(--g);font-weight:bold;padding:6px 16px;border-radius:20px;margin-top:6px}
+.bar{position:sticky;top:0;z-index:5;background:#fff;border:3px solid var(--g);border-radius:16px;margin:14px 0;padding:8px 14px;display:flex;gap:12px;align-items:center;font-weight:bold;color:var(--g)}
+.track{flex:1;height:14px;background:var(--p);border-radius:8px;overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--g2),#e0567f);transition:width .4s}
+h2{background:var(--g2);color:#fff;padding:10px 16px;border-radius:14px;margin:26px 0 10px;font-size:1.15rem}
+.consigne{background:#fff3f8;border-left:6px solid var(--g);padding:8px 12px;border-radius:8px;margin-bottom:10px;font-size:.95rem}
+.q{background:#fff;border:3px solid var(--p2);border-radius:18px;padding:14px;margin:12px 0;box-shadow:0 3px 8px rgba(123,18,48,.15)}
+.q.ok{border-color:var(--ok)}.q.ko{border-color:var(--ko)}
+.n{display:inline-block;background:var(--g);color:#fff;border-radius:50%;width:32px;height:32px;line-height:32px;text-align:center;margin-right:8px;font-weight:bold}
+.txt{font-size:1.15rem;font-weight:bold}
+.mot{font-size:2rem;letter-spacing:6px;text-align:center;color:var(--g);margin:10px 0;font-family:"Trebuchet MS",Verdana,sans-serif}
+.opts{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.opt{flex:1 1 130px;font:inherit;font-size:1.15rem;padding:10px;border:3px solid var(--g);background:var(--p);color:var(--g);border-radius:14px;cursor:pointer;transition:transform .1s}
+.opt:hover:not(:disabled){transform:scale(1.04);background:#fff}
+.opt:disabled{cursor:default}
+.opt.ok{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.ko{background:var(--ko);border-color:var(--ko);color:#fff}
+.fb{margin-top:8px;font-weight:bold;min-height:1.2em}
+.fb.ok{color:var(--ok)}.fb.ko{color:var(--ko)}
+.astuce{background:#fff;border:3px dashed var(--g);border-radius:16px;padding:10px 14px;margin:10px 0}
+.actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:28px 0 10px}
+.btn{font:inherit;font-weight:bold;font-size:1.05rem;padding:12px 22px;border:none;border-radius:30px;background:var(--g);color:#fff;cursor:pointer;box-shadow:0 4px 10px rgba(123,18,48,.4)}
+.btn:hover{background:var(--g2)}
+.btn.alt{background:#fff;color:var(--g);border:3px solid var(--g)}
+#resultat{display:none;text-align:center;background:#fff;border:4px solid var(--g);border-radius:20px;padding:16px;font-size:1.2rem;color:var(--g);margin-top:16px}
+#corrige{display:none;background:#fff;border:4px solid var(--g);border-radius:20px;padding:14px 18px;margin-top:16px}
+#corrige li{margin:10px 0;line-height:1.5}
+#corrige b.v{color:var(--ok)}
+footer{text-align:center;color:var(--g);font-weight:bold;margin:24px 0 8px}
+@media print{.actions,.bar{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<img src="data:image/jpeg;base64,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" alt="Logo Fransid" width="211" height="166">
+<h1>Exercices de lecture : b / d – p / q – groupes de consonnes</h1>
+<p>Niveau CM1 • 30 questions • Correction automatique</p>
+<div class="auteur">✏️ Exercice de Sid KHALIFA</div>
+</header>
+
+<div class="bar"><span id="prog">0 / 30</span><div class="track"><div class="fill" id="fill"></div></div><span id="score">⭐ 0</span></div>
+
+<div class="astuce">💡 <b>Astuces :</b> le <b>b</b> a son ventre à droite (bâton puis ventre, comme <i>bateau</i>) ; le <b>d</b> a son ventre à gauche (ventre puis bâton). Le <b>p</b> a sa tige qui descend avec le rond en haut à droite ; le <b>q</b> a sa tige qui descend avec le rond en haut à gauche. Clique sur la bonne réponse : <span style="color:var(--ok)"><b>vert = juste</b></span>, <span style="color:var(--ko)"><b>rouge = faux</b></span>.</div>
+
+<div id="quiz"></div>
+
+<div id="resultat"></div>
+<div class="actions">
+<button class="btn" onclick="bilan()">🎯 Voir mon résultat</button>
+<button class="btn alt" onclick="toggleCorrige()">📖 Corrigé avec explications</button>
+<button class="btn" onclick="telecharger()">⬇️ Télécharger</button>
+<button class="btn alt" onclick="location.reload()">🔄 Recommencer</button>
+</div>
+<div id="corrige"></div>
+<footer>Exercice de Sid KHALIFA — Bravo pour ton travail ! 🌸</footer>
+</div>
+
+<script>
+const PAGE_PROPRE = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+const SECTIONS = [
+ {t:"🅰️ Partie 1 : Ne plus confondre b et d", c:"Choisis la lettre ou le mot qui convient.", n:[1,10]},
+ {t:"🅱️ Partie 2 : Ne plus confondre p et q", c:"Choisis la lettre ou le mot qui convient.", n:[11,20]},
+ {t:"🔤 Partie 3 : Lire les mots qui commencent par 2 consonnes + 1 voyelle", c:"Lis bien les syllabes (pl, br, cr, tr, gr, fl, dr…) puis réponds.", n:[21,30]}
+];
+// [énoncé, mot affiché, options, bonne réponse, explication]
+const Q = [
+ ["Complète le mot : quelle lettre manque ?","_ateau",["b","d"],"b","« bateau » : on entend [ba]. Le b s'écrit avec le bâton puis le ventre à droite."],
+ ["Complète le mot : quelle lettre manque ?","_oigt",["b","d"],"d","« doigt » commence par d : le ventre est à gauche, puis le bâton."],
+ ["Complète le mot : quelle lettre manque ?","_alcon",["b","d"],"b","« balcon » commence par b. Le bâton est à gauche, le ventre à droite."],
+ ["Complète le mot : quelle lettre manque ?","_ragon",["b","d"],"d","« dragon » commence par dr. Dans d, le ventre est à gauche."],
+ ["Quel mot est bien écrit ?","",["bonbon","donbon","bondon","dondon"],"bonbon","« bonbon » : b au début, b à la fin de la 1re syllabe, puis on lit bon-bon."],
+ ["Quel mot est bien écrit ?","",["dauphin","bauphin","dauphib","bauphib"],"dauphin","« dauphin » commence par d (dau-) et finit par n."],
+ ["Complète le mot : quelle lettre manque ?","ca_ane",["b","d"],"b","« cabane » : ca-ba-ne. On entend [ba], donc b."],
+ ["Complète le mot : quelle lettre manque ?","ron_",["b","d"],"d","« rond » finit par un d muet (comme dans « ronde » : ron-de)."],
+ ["Quelle phrase est bien écrite ?","",["Le bébé dort dans son lit.","Le débé bort dans son lit.","Le bédé dort bans son lit.","Le dédé bort dans son lit."],"Le bébé dort dans son lit.","Il faut b dans « bébé » et d dans « dort » et « dans »."],
+ ["Dans quel mot y a-t-il la lettre d ?","",["bébé","balle","cadeau","botte"],"cadeau","« cadeau » contient un d (ca-d-eau). Les autres mots ne contiennent que des b."],
+ ["Complète le mot : quelle lettre manque ?","_omme",["p","q"],"p","« pomme » : le p a sa tige qui descend et son rond à droite."],
+ ["Complète le mot : quelle lettre manque ?","_uatre",["p","q"],"q","« quatre » commence par qu. Le q a son rond à gauche de la tige."],
+ ["Complète le mot : quelle lettre manque ?","_oisson",["p","q"],"p","« poisson » commence par p (pois-son)."],
+ ["Complète le mot : quelle lettre manque ?","_ueue",["p","q"],"q","« queue » s'écrit avec qu, comme « question »."],
+ ["Quel mot est bien écrit ?","",["parapluie","qarapluie","paraqluie","qaraqluie"],"parapluie","« parapluie » ne contient que des p (pa-ra-plu-ie)."],
+ ["Quel mot est bien écrit ?","",["question","puestion","quesption","pestion"],"question","« question » commence par qu et contient le son [ti]."],
+ ["Complète le mot : quelle lettre manque ?","lam_e",["p","q"],"p","« lampe » : on écrit mp devant p, et c'est bien un p."],
+ ["Complète le mot : quelle lettre manque ?","cir_ue",["p","q"],"q","« cirque » finit par -que. Le q est toujours suivi de u."],
+ ["Quelle phrase est bien écrite ?","",["Le petit pingouin pique la pomme.","Le qetit qingouin qique la qomme.","Le petit pingouin qique la qomme.","Le qetit pingouin pique la pomme."],"Le petit pingouin pique la pomme.","Tous les mots de la phrase s'écrivent avec p, jamais avec q."],
+ ["Dans quel mot y a-t-il la lettre q ?","",["papa","poule","masque","pipe"],"masque","« masque » se termine par -que : q suivi de u."],
+ ["Quel mot commence par « pla » ?","",["plage","page","lape","gale"],"plage","Pl + a = « pla » : pla-ge. Les deux consonnes se lisent d'un seul souffle."],
+ ["Quel mot commence par « cri » ?","",["crise","cirse","ricse","sirce"],"crise","Cr + i = « cri » : cri-se."],
+ ["Quel mot commence par « tro » ?","",["trop","tord","port","rot"],"trop","Tr + o = « tro » : trop. Il ne faut pas inverser t et r."],
+ ["Quel mot commence par « gra » ?","",["grappe","garpe","rapge","pagre"],"grappe","Gr + a = « gra » : gra-ppe."],
+ ["Quel mot commence par « fle » ?","",["flèche","félche","lfèche","chèfle"],"flèche","Fl + è = « flè » : flè-che."],
+ ["Comment découper « crocodile » en syllabes ?","",["cro-co-dile","croc-o-dile","cr-oco-dile","c-roco-dile"],"cro-co-dile","Cr + o = cro. On ne sépare jamais cr : cro-co-dile."],
+ ["Comment découper « brosse » en syllabes ?","",["bros-se","b-rosse","br-osse","bro-sse"],"bros-se","Br + o = bro, puis on coupe entre les deux s : bros-se."],
+ ["Quel mot est bien écrit ?","",["drapeau","darpeau","dparea","rdapeau"],"drapeau","« drapeau » : dr + a = dra, puis peau."],
+ ["Complète avec le bon groupe : le moyen de transport qui roule sur des rails.","___ain",["tr","rt","dr","br"],"tr","« train » : tr + ain. Les autres donnent « drain » ou « brain », qui ne sont pas le mot cherché."],
+ ["Quelle phrase est bien écrite ?","",["Le grand crocodile mange une fraise.","Le garnd corcodile mange une fraise.","Le grand crocodile mange une farise.","Le rgand crocodile mgane une fraise."],"Le grand crocodile mange une fraise.","Les groupes gr, cr, fr restent toujours dans cet ordre."]
+];
+const done = new Array(30).fill(null);
+let score = 0, answered = 0;
+const shuffle = a => { a = a.slice(); for (let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; };
+const quiz = document.getElementById("quiz");
+
+SECTIONS.forEach(s => {
+  quiz.insertAdjacentHTML("beforeend", `<h2>${s.t}</h2><div class="consigne">${s.c}</div>`);
+  for (let i = s.n[0]-1; i < s.n[1]; i++) {
+    const [enonce, mot, opts, bonne] = Q[i];
+    const bloc = document.createElement("div");
+    bloc.className = "q"; bloc.id = "q"+i;
+    bloc.innerHTML = `<span class="n">${i+1}</span><span class="txt">${enonce}</span>` +
+      (mot ? `<div class="mot">${mot}</div>` : "") + `<div class="opts"></div><div class="fb"></div>`;
+    const box = bloc.querySelector(".opts");
+    (opts.length === 2 ? opts : shuffle(opts)).forEach(o => {
+      const b = document.createElement("button");
+      b.className = "opt"; b.textContent = o;
+      b.onclick = () => repondre(i, o, bloc);
+      box.appendChild(b);
+    });
+    quiz.appendChild(bloc);
+  }
+});
+
+function repondre(i, choix, bloc) {
+  if (done[i] !== null) return;
+  const bonne = Q[i][3], juste = choix === bonne;
+  done[i] = juste; answered++; if (juste) score++;
+  bloc.classList.add(juste ? "ok" : "ko");
+  bloc.querySelectorAll(".opt").forEach(b => {
+    b.disabled = true;
+    if (b.textContent === bonne) b.classList.add("ok");
+    else if (b.textContent === choix) b.classList.add("ko");
+  });
+  const fb = bloc.querySelector(".fb");
+  fb.className = "fb " + (juste ? "ok" : "ko");
+  fb.textContent = juste ? "✅ Bravo, c'est juste !" : "❌ Ce n'est pas ça. La bonne réponse est : " + bonne;
+  document.getElementById("prog").textContent = answered + " / 30";
+  document.getElementById("score").textContent = "⭐ " + score;
+  document.getElementById("fill").style.width = (answered/30*100) + "%";
+  if (answered === 30) bilan();
+}
+
+function bilan() {
+  const r = document.getElementById("resultat");
+  const msg = score >= 27 ? "Extraordinaire, tu es une championne ! 🏆" : score >= 20 ? "Très bien, continue comme ça ! 🌟" : score >= 12 ? "Bon travail, relis les astuces et réessaie ! 💪" : "Courage ! Relis le corrigé puis recommence 🌸";
+  r.style.display = "block";
+  r.innerHTML = `<b>Résultat : ${score} / 30</b> (${answered} question${answered>1?"s":""} répondue${answered>1?"s":""})<br>${msg}`;
+  r.scrollIntoView({behavior:"smooth"});
+}
+
+function toggleCorrige() {
+  const c = document.getElementById("corrige");
+  if (c.style.display === "block") { c.style.display = "none"; return; }
+  c.innerHTML = "<h3 style='color:var(--g);margin-top:0'>📖 Corrigé avec explications</h3><ol>" +
+    Q.map((q,i) => `<li><b>${q[0]}</b> ${q[1] ? "« "+q[1]+" »" : ""}<br>Réponse : <b class="v">${q[3]}</b><br><i>${q[4]}</i></li>`).join("") + "</ol>";
+  c.style.display = "block";
+  c.scrollIntoView({behavior:"smooth"});
+}
+
+function telecharger() {
+  const blob = new Blob([PAGE_PROPRE], {type:"text/html;charset=utf-8"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "exercices_bd_pq_consonnes_Sid_KHALIFA.html";
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+}
+</script>
+</body>
+</html>
